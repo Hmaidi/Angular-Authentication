@@ -45,4 +45,39 @@ router.post('/register',(req,res) =>{
     }
    })
 })
-module.exports = router
+
+router.post('/login',(req,res) =>{
+    let UserData = req.body;
+    console.log(UserData);
+    UserModel.findOne({email: UserData.email},(error,users) =>{
+          if(error){
+              console.log(error);
+          }
+          else {
+            if(!users){
+                res.status(401).send('Invalid Email');
+            }
+            else 
+            if(users.password !== UserData.password){
+             res.status(401).send('Invalid Password'); 
+            }
+            else{
+                res.status(200).send('Your email ' +users.email +' and your password ' +users.password );
+                console.log('Bien');
+            }
+ 
+         }
+    })
+    
+   /* Users.findOne({email: UserData.email},(error,users) =>{
+        if(error){
+            console.log(error);
+        }
+       else{
+           console.log('bien');
+       }
+
+    })*/
+
+})
+module.exports = router 
