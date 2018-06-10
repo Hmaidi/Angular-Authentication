@@ -30,7 +30,89 @@ const db = "mongodb://localhost:27017/Authentication";
   router.get('/', (req,res) => {
 res.send('This API from Router');
 })
-
+router.get('/events', (req,res) => {
+    let events = [
+      {
+        "_id": "1",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "2",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "3",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "4",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "5",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "6",
+        "name": "Auto Expo",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      }
+    ]
+    res.json(events)
+  })
+  
+  router.get('/special', (req, res) => {
+    let specialEvents = [
+      {
+        "_id": "1",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "2",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "3",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "4",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "5",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      },
+      {
+        "_id": "6",
+        "name": "Auto Expo Special",
+        "description": "lorem ipsum",
+        "date": "2012-04-23T18:25:43.511Z"
+      }
+    ]
+    res.json(specialEvents)
+  })
 router.post('/register',(req,res) =>{
    let UserData = req.body;
    let Users = new UserModel(UserData);
@@ -63,7 +145,7 @@ router.post('/login',(req,res) =>{
             }
             else{
                 res.status(200).send('Your email ' +users.email +' and your password ' +users.password );
-                console.log('Bien');
+                console.log('Email and Password successful connected');
             }
  
          }
